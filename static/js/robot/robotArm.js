@@ -294,7 +294,7 @@ function basec(){
 }
 //----------------------------------------------------------------------------
 function wave(){
-    flag=0;
+    flag= 0;
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
     based();
     headd();
