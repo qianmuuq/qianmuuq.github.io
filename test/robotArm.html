@@ -1,0 +1,54 @@
+<html>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute  vec4 vPosition;
+attribute  vec4 vColor;
+varying vec4 fColor;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() 
+{
+    fColor = vColor;
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying  vec4 fColor;
+
+void main() 
+{ 
+    gl_FragColor = fColor;
+} 
+</script>
+
+<script type="text/javascript" src="../static/js/commonrobot/webgl-utils.js"></script>
+<script type="text/javascript" src="../static/js/commonrobot/initShaders.js"></script>
+<script type="text/javascript" src="../static/js/commonrobot/MV.js"></script>
+<script type="text/javascript" src="../static/js/robot/robotArm.js"></script>
+
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<div>
+    <p>选择身体部位：</p>
+    <button onclick="headc()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 头部</button>
+    <button onclick="legc()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 腿部</button>
+    <button onclick="leftc()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 右手</button>
+    <button onclick="rightc()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 左手</button>
+    <button onclick="basec()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 整体</button>
+</div>
+<div>
+    <p>互动动作：</p>
+    <button onclick="wave()" style="display: inline-block; width: 100px; height: 60px; background-color: palegoldenrod; border:2px solid black;line-height: 60px; text-align: center; color: black; font-weight: bolder;"> 挥手</button>
+</div>
+</body>
+</html>
