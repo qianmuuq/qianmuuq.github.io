@@ -316,6 +316,19 @@ function handleMouseMove(event) {   //鼠标事件
     buildModelViewProj();
 }
 
+function updateColor(){
+    var bcolor = [];
+    for (var i = 0; i < mesh.vertexBuffer.numItems; i++)
+        bcolor.push(currentColor[0], currentColor[1], currentColor[2], currentColor[3]);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, cBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(bcolor), gl.STATIC_DRAW);
+
+    vColor = gl.getAttribLocation(program, "vColor",);
+    gl.vertexAttribPointer(vColor, 4, gl.FLOAT, false, 0, 0);
+    gl.enableVertexAttribArray(vColor);
+}
+
 function checkInput(){      //投影方式、绘制方式、颜色
     var ptype = document.getElementById( "ortho" ).checked; 
     if( ptype ) {
